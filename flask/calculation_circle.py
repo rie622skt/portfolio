@@ -12,6 +12,7 @@ def calculation_circle(x, y):
         x5 = x + x1
         x6 = x4 * 1.1
         x7 = x - x4
+        x8 = x
         return x5, x4, x6, x7,  y, x 
     except ValueError:
         return '数値を入力してください'
