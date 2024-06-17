@@ -3,14 +3,18 @@ import React from "react";
 
 function MainComponent() {
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 640);
+  const [isMobile, setIsMobile] = React.useState(false); // 初期値を false に設定
 
   React.useEffect(() => {
-    const handleResize = () => {
+    // クライアントサイドでのみ実行される処理
+    if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth <= 640);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 640);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   interface Project {
@@ -29,25 +33,8 @@ function MainComponent() {
     // プロジェクトデータの詳細は省略
   ];
 
-  interface Skill {
-    id: number;
-    name: string;
-    level: string;
-  }
-
-  const skills: Skill[] = [
-    // スキルデータの詳細は省略
-  ];
-
-  const internships = [
-    // インターンシップデータの詳細は省略
-  ];
-
-  const technologiesUsed = ["React", "Tailwind CSS", "JavaScript", "Node.js"];
-
   return (
     <div className="bg-gray-900 text-white font-sans min-h-screen relative overflow-hidden">
-      {/* 以下省略 */}
       <section id="projects" className="my-12">
         <h2 className="text-2xl font-semibold mb-4">Projects</h2>
         <div
@@ -141,7 +128,6 @@ function MainComponent() {
           </div>
         )}
       </section>
-      {/* 以下省略 */}
     </div>
   );
 }
