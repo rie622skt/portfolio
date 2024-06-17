@@ -363,7 +363,6 @@ function MainComponent() {
             </button>
           </form>
         </section>
-        </section>
       </main>
       <footer className="p-6 bg-gray-800 text-center">
         <p className="font-sans">&copy; 2023 My Portfolio</p>
