@@ -30,11 +30,152 @@ function MainComponent() {
   }
 
   const projects: Project[] = [
-    // プロジェクトデータの詳細は省略
+      {
+      id: 1,
+      title: "Project 1",
+      description: "毎日占いbot",
+      details: "毎日0時15分に様々なサイトの星座占いの結果を収集し、星座ごとに順位の高い3サイトをLine botが順に返すものです。また毎日目標を設定することができ、20時に目標が達成出来たかの確認メッセージがくるので1日を振り返ることが出来ます。",
+      imgSrc: "/スクリーンショット 2024-06-12 094530.png",
+      innovations: "私が担当した部分は開発全般で、基本運営を全てawsで一貫することで容易な運営管理、サーバーレス環境を実現しました。また運営費および開発費は全て0円の為、継続開発、運営がしやすいのも大きなメリットです。",
+      url: "LineID:@552gglxl",
+      git: "https://github.com/rie622skt/line_uranai.git",
+      reason: "Motivation and thought process.",
+    },
+    {
+      id: 2,
+      title: "Project 2",
+      description: "doda情報収集コード",
+      details: "企業解析のためdodaの求人情報を収集し、その中から特定の条件を満たすものを抽出するコードです。また、その情報をリスト化しcsvファイルに保存します。",
+      imgSrc: "/スクリーンショット 2024-06-11 180645.png",
+      innovations: "pandasを用いてデータの整理を行い、csvファイルに保存することで、データの可視化を容易にしました。また条件を変更するだけで異なるデータを収集することができるのでき、正規表現を用いているので様々なデータを収集することが可能です。",
+      url: "",
+      git: "https://github.com/rie622skt/doda.git",
+      reason: "Motivation and thought process.",
+    },
+    {
+      id: 3,
+      title: "Project 3",
+      description: "invoice対策値引きアプリ",
+      details: "自営業の父のために作成した、一定の金額に対して様々な値引き率で計算できるアプリです。",
+      imgSrc: "/スクリーンショット 2024-06-12 094405.png",
+      innovations: "シンプルなUIで、金額と値引き率を入力するだけで計算ができるので、直感的に簡単に使うことができます。",
+      url: "https://rie622skt.github.io/invoice/",
+      git: "https://github.com/rie622skt/invoice.git",
+      reason: "Motivation and thought process.",
+    },
   ];
 
+    interface Skill {
+    id: number;
+    name: string;
+    level: string;
+  }
+
+  const skills: Skill[] = [
+    // 既存のスキルデータ
+    { id: 1, name: "Python", level: "2年ほどメインで使用しており、project1、project2のバックエンドで使用しています。" },
+    { id: 2, name: "aws", level: "project1に使用しました。" },
+    { id: 3, name: "React", level: "このポートフォリオサイトの制作で、初めて使用しました。" },
+    { id: 4, name: "Node.js", level: "このポートフォリオサイトの制作で、初めて使用しました。" },
+    { id: 5, name: "vb.net", level: "インターン先で使用しました。" },
+    // 他のスキルデータもここに
+  ];
+  const internships = [
+    {
+      id: 1,
+      company: "東山株式会社",
+      role: "実施済み",
+      duration: "1か月間",
+    },
+    {
+      id: 2,
+      company: "RIZAPグループ",
+      role: "実施予定",
+      duration: "3日間",
+    },
+    {
+      id: 3,
+      company: "セーフィー株式会社",
+      role: "実施予定",
+      duration: "2日間",
+    },
+
+  ];
+
+  const technologiesUsed = ["React", "Tailwind CSS", "JavaScript", "Node.js"];
+  
   return (
     <div className="bg-gray-900 text-white font-sans min-h-screen relative overflow-hidden">
+        <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{ backgroundImage: "url('./background.jpg')", zIndex: -1 }}
+    ></div>
+    <header
+      className={`p-6 bg-gray-800 shadow-md ${
+        isMobile
+          ? "flex flex-col items-center"
+          : "flex items-center justify-between"
+      }`}
+    >
+      <h1 className="text-3xl font-bold mb-2">My Portfolio</h1>
+      {!isMobile && (
+        <nav className="space-x-4 flex-row">
+          <a href="#about" className="hover:text-gray-400">
+            About
+          </a>
+          <a href="#projects" className="hover:text-gray-400">
+            Projects
+          </a>
+          <a href="#skills" className="hover:text-gray-400">
+            Skills
+          </a>
+          <a href="#internships" className="hover:text-gray-400">
+            Internships
+          </a>
+          <a href="#technologies-used" className="hover:text-gray-400">
+            Technologies Used
+          </a>
+          <a href="#contact" className="hover:text-gray-400">
+            Contact
+          </a>
+        </nav>
+      )}
+    </header>
+    {isMobile && (
+      <nav className="space-y-2 text-center mt-2">
+        <a href="#about" className="hover:text-gray-400 block">
+          About
+        </a>
+        <a href="#projects" className="hover:text-gray-400 block">
+          Projects
+        </a>
+        <a href="#skills" className="hover:text-gray-400 block">
+          Skills
+        </a>
+        <a href="#internships" className="hover:text-gray-400 block">
+          Internships
+        </a>
+        <a href="#technologies-used" className="hover:text-gray-400 block">
+          Technologies Used
+        </a>
+        <a href="#contact" className="hover:text-gray-400 block">
+          Contact
+        </a>
+      </nav>
+    )}
+    <main className="p-6">
+      <section id="about" className="my-12 text-center">
+        <h2 className="text-5xl font-semibold mb-4 animation-slideIn">
+          Sakida Ryuto
+        </h2>
+        <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+        <p className="text-lg">
+          初めまして、私はエンジニアを目指している大学三年生の﨑田琉翔（サキダリュウト）と申します。
+          経営学部に所属しており、主に経営学を学んでいます。プログラミングは大学一年生の時に初めて触れ、その後は独学で学びました。
+          主にバックエンドの開発を行っており、Pythonを用いた開発が得意です。今後はフロントエンドの開発も学び、フルスタックエンジニアを目指しています。
+          
+        </p>
+      </section>
       <section id="projects" className="my-12">
         <h2 className="text-2xl font-semibold mb-4">Projects</h2>
         <div
