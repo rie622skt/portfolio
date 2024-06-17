@@ -329,7 +329,6 @@ function MainComponent() {
               <label
                 htmlFor="email"
                 className="block mb-1 font-sans"
-                name="email"
               >
                 Email
               </label>
@@ -344,7 +343,6 @@ function MainComponent() {
               <label
                 htmlFor="message"
                 className="block mb-1 font-sans"
-                name="message"
               >
                 Message
               </label>
