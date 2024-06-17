@@ -109,7 +109,7 @@ function MainComponent() {
         <div
       className="absolute inset-0 bg-cover bg-center"
       style={{ backgroundImage: "url('./background.jpg')", zIndex: -1 }}
-    ></div>
+    />
     <header
       className={`p-6 bg-gray-800 shadow-md ${
         isMobile
