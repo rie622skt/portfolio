@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Page from "./project";
 
 function MainComponent() {
   const [selectedProject, setSelectedProject] = React.useState(null);
