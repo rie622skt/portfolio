@@ -315,7 +315,6 @@ function MainComponent() {
               <label
                 htmlFor="name"
                 className="block mb-1 font-sans"
-                name="name"
               >
                 Name
               </label>
