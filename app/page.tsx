@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Page from "./project";
 
 function MainComponent() {
   const [selectedProject, setSelectedProject] = React.useState(null);
@@ -14,7 +13,20 @@ function MainComponent() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const projects = [
+  interface Project {
+    id: number;
+    title: string;
+    description: string;
+    details: string;
+    imgSrc: string;
+    innovations: string;
+    url: string;
+    git: string;
+    reason: string;
+  }
+
+  const projects: Project[] = [
+    // 既存のプロジェクトデータ
     {
       id: 1,
       title: "Project 1",
@@ -48,17 +60,24 @@ function MainComponent() {
       git: "https://github.com/rie622skt/invoice.git",
       reason: "Motivation and thought process.",
     },
+    // 他のプロジェクトデータもここに
   ];
 
-  const skills = [
+  interface Skill {
+    id: number;
+    name: string;
+    level: string;
+  }
+
+  const skills: Skill[] = [
+    // 既存のスキルデータ
     { id: 1, name: "Python", level: "2年ほどメインで使用しており、project1、project2のバックエンドで使用しています。" },
     { id: 2, name: "aws", level: "project1に使用しました。" },
     { id: 3, name: "React", level: "このポートフォリオサイトの制作で、初めて使用しました。" },
     { id: 4, name: "Node.js", level: "このポートフォリオサイトの制作で、初めて使用しました。" },
     { id: 5, name: "vb.net", level: "インターン先で使用しました。" },
-    { id: 6, name: "Dart", level: "まだ学び始めたばかりです。" },
+    // 他のスキルデータもここに
   ];
-
   const internships = [
     {
       id: 1,
