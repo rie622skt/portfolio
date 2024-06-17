@@ -106,169 +106,294 @@ function MainComponent() {
   
   return (
     <div className="bg-gray-900 text-white font-sans min-h-screen relative overflow-hidden">
-        <div
-      className="absolute inset-0 bg-cover bg-center"
-      style={{ backgroundImage: "url('./background.jpg')", zIndex: -1 }}
-    ></div>
-    <header
-      className={`p-6 bg-gray-800 shadow-md ${
-        isMobile
-          ? "flex flex-col items-center"
-          : "flex items-center justify-between"
-      }`}
-    >
-      <h1 className="text-3xl font-bold mb-2">My Portfolio</h1>
-      {!isMobile && (
-        <nav className="space-x-4 flex-row">
-          <a href="#about" className="hover:text-gray-400">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('./background.jpg')", zIndex: -1 }}
+      ></div>
+      <header
+        className={`p-6 bg-gray-800 shadow-md ${
+          isMobile
+            ? "flex flex-col items-center"
+            : "flex items-center justify-between"
+        }`}
+      >
+        <h1 className="text-3xl font-bold mb-2">My Portfolio</h1>
+        {!isMobile && (
+          <nav className="space-x-4 flex-row">
+            <a href="#about" className="hover:text-gray-400">
+              About
+            </a>
+            <a href="#projects" className="hover:text-gray-400">
+              Projects
+            </a>
+            <a href="#skills" className="hover:text-gray-400">
+              Skills
+            </a>
+            <a href="#internships" className="hover:text-gray-400">
+              Internships
+            </a>
+            <a href="#technologies-used" className="hover:text-gray-400">
+              Technologies Used
+            </a>
+            <a href="#contact" className="hover:text-gray-400">
+              Contact
+            </a>
+          </nav>
+        )}
+      </header>
+      {isMobile && (
+        <nav className="space-y-2 text-center mt-2">
+          <a href="#about" className="hover:text-gray-400 block">
             About
           </a>
-          <a href="#projects" className="hover:text-gray-400">
+          <a href="#projects" className="hover:text-gray-400 block">
             Projects
           </a>
-          <a href="#skills" className="hover:text-gray-400">
+          <a href="#skills" className="hover:text-gray-400 block">
             Skills
           </a>
-          <a href="#internships" className="hover:text-gray-400">
+          <a href="#internships" className="hover:text-gray-400 block">
             Internships
           </a>
-          <a href="#technologies-used" className="hover:text-gray-400">
+          <a href="#technologies-used" className="hover:text-gray-400 block">
             Technologies Used
           </a>
-          <a href="#contact" className="hover:text-gray-400">
+          <a href="#contact" className="hover:text-gray-400 block">
             Contact
           </a>
         </nav>
       )}
-    </header>
-    {isMobile && (
-      <nav className="space-y-2 text-center mt-2">
-        <a href="#about" className="hover:text-gray-400 block">
-          About
-        </a>
-        <a href="#projects" className="hover:text-gray-400 block">
-          Projects
-        </a>
-        <a href="#skills" className="hover:text-gray-400 block">
-          Skills
-        </a>
-        <a href="#internships" className="hover:text-gray-400 block">
-          Internships
-        </a>
-        <a href="#technologies-used" className="hover:text-gray-400 block">
-          Technologies Used
-        </a>
-        <a href="#contact" className="hover:text-gray-400 block">
-          Contact
-        </a>
-      </nav>
-    )}
-    <main className="p-6">
-      <section id="about" className="my-12 text-center">
-        <h2 className="text-5xl font-semibold mb-4 animation-slideIn">
-          Sakida Ryuto
-        </h2>
-        <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-        <p className="text-lg">
-          初めまして、私はエンジニアを目指している大学三年生の﨑田琉翔（サキダリュウト）と申します。
-          経営学部に所属しており、主に経営学を学んでいます。プログラミングは大学一年生の時に初めて触れ、その後は独学で学びました。
-          主にバックエンドの開発を行っており、Pythonを用いた開発が得意です。今後はフロントエンドの開発も学び、フルスタックエンジニアを目指しています。
-          
-        </p>
-      </section>
-      <section id="projects" className="my-12">
-        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-        <div
-          className={`grid grid-cols-1 ${
-            !isMobile ? "sm:grid-cols-2 lg:grid-cols-3" : ""
-          } gap-4`}
-        >
-          {projects.map((project) => {
-            const isSelected =
-              selectedProject && selectedProject.id === project.id;
-            return (
-              <div
-                key={project.id}
-                className="bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer"
-                onClick={() =>
-                  setSelectedProject(isSelected ? null : project)
-                }
-              >
-                <img
-                  src={project.imgSrc}
-                  alt={`Screenshot of project titled ${project.title}`}
-                  className="w-full h-[200px] object-cover rounded-md"
-                />
-                <h3 className="text-xl font-bold mt-4">{project.title}</h3>
-                <p className="mt-2">{project.description}</p>
-                {isMobile && isSelected && (
-                  <div className="mt-4">
-                    <p>{project.details}</p>
-                    <p className="mt-4">
-                      Innovations: {project.innovations}
-                    </p>
-                    <p className="mt-2">
-                      URL:{" "}
-                      <a
-                        href={project.url}
-                        className="text-blue-500 underline"
-                      >
-                        {project.url}
-                      </a>
-                    </p>
-                    <p className="mt-2">
-                      Git:{" "}
-                      <a
-                        href={project.git}
-                        className="text-blue-500 underline"
-                      >
-                        {project.git}
-                      </a>
-                    </p>
-                    <p className="mt-2">Reason: {project.reason}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-        {!isMobile && selectedProject && (
-          <div className="mt-8 p-4 bg-gray-700 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-2">
-              {selectedProject.title}
-            </h3>
-            <p className="mb-4">{selectedProject.details}</p>
-            <p className="mb-4">
-              Innovations: {selectedProject.innovations}
-            </p>
-            <p className="mb-4">
-              URL:{" "}
-              <a
-                href={selectedProject.url}
-                className="text-blue-500 underline"
-              >
-                {selectedProject.url}
-              </a>
-            </p>
-            <p className="mb-4">
-              Git:{" "}
-              <a
-                href={selectedProject.git}
-                className="text-blue-500 underline"
-              >
-                {selectedProject.git}
-              </a>
-            </p>
-            <p className="mb-4">Reason: {selectedProject.reason}</p>
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
-              onClick={() => setSelectedProject(null)}
-            >
-              Close
-            </button>
+      <main className="p-6">
+        <section id="about" className="my-12 text-center">
+          <h2 className="text-5xl font-semibold mb-4 animation-slideIn">
+            Sakida Ryuto
+          </h2>
+          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+          <p className="text-lg">
+            初めまして、私はエンジニアを目指している大学三年生の﨑田琉翔（サキダリュウト）と申します。
+            経営学部に所属しており、主に経営学を学んでいます。プログラミングは大学一年生の時に初めて触れ、その後は独学で学びました。
+            主にバックエンドの開発を行っており、Pythonを用いた開発が得意です。今後はフロントエンドの開発も学び、フルスタックエンジニアを目指しています。
+            
+          </p>
+        </section>
+        <section id="projects" className="my-12">
+          <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+          <div
+            className={`grid grid-cols-1 ${
+              !isMobile ? "sm:grid-cols-2 lg:grid-cols-3" : ""
+            } gap-4`}
+          >
+            {projects.map((project) => {
+              const isSelected =
+                selectedProject && selectedProject.id === project.id;
+              return (
+                <div
+                  key={project.id}
+                  className="bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer"
+                  onClick={() =>
+                    setSelectedProject(isSelected ? null : project)
+                  }
+                >
+                  <img
+                    src={project.imgSrc}
+                    alt={`Screenshot of project titled ${project.title}`}
+                    className="w-full h-[200px] object-cover rounded-md"
+                  />
+                  <h3 className="text-xl font-bold mt-4">{project.title}</h3>
+                  <p className="mt-2">{project.description}</p>
+                  {isMobile && isSelected && (
+                    <div className="mt-4">
+                      <p>{project.details}</p>
+                      <p className="mt-4">
+                        Innovations: {project.innovations}
+                      </p>
+                      <p className="mt-2">
+                        URL:{" "}
+                        <a
+                          href={project.url}
+                          className="text-blue-500 underline"
+                        >
+                          {project.url}
+                        </a>
+                      </p>
+                      <p className="mt-2">
+                        Git:{" "}
+                        <a
+                          href={project.git}
+                          className="text-blue-500 underline"
+                        >
+                          {project.git}
+                        </a>
+                      </p>
+                      <p className="mt-2">Reason: {project.reason}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        )}
-      </section>
+          {!isMobile && selectedProject && (
+            <div className="mt-8 p-4 bg-gray-700 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold mb-2">
+                {selectedProject.title}
+              </h3>
+              <p className="mb-4">{selectedProject.details}</p>
+              <p className="mb-4">
+                Innovations: {selectedProject.innovations}
+              </p>
+              <p className="mb-4">
+                URL:{" "}
+                <a
+                  href={selectedProject.url}
+                  className="text-blue-500 underline"
+                >
+                  {selectedProject.url}
+                </a>
+              </p>
+              <p className="mb-4">
+                Git:{" "}
+                <a
+                  href={selectedProject.git}
+                  className="text-blue-500 underline"
+                >
+                  {selectedProject.git}
+                </a>
+              </p>
+              <p className="mb-4">Reason: {selectedProject.reason}</p>
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
+                onClick={() => setSelectedProject(null)}
+              >
+                Close
+              </button>
+            </div>
+          )}
+        </section>
+        <section id="skills" className="my-12">
+          <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {skills.map((skill) => (
+              <div
+                key={skill.id}
+                className="bg-gray-800 p-4 rounded-lg shadow-md"
+              >
+                <h3 className="text-xl font-bold">{skill.name}</h3>
+                <p className="mt-2">{skill.level}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section id="internships" className="my-12">
+          <h2 className="text-2xl font-semibold mb-4">Internships</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {internships.map((internship) => (
+              <div
+                key={internship.id}
+                className="bg-gray-800 p-4 rounded-lg shadow-md"
+              >
+                <h3 className="text-xl font-bold">{internship.company}</h3>
+                <p className="mt-2">{internship.role}</p>
+                <p className="mt-2">{internship.duration}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section id="technologies-used" className="my-12">
+          <h2 className="text-2xl font-semibold mb-4">Technologies Used</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {technologiesUsed.map((tech, index) => (
+              <div key={index} className="bg-gray-800 p-4 rounded-lg shadow-md">
+                <h3 className="text-xl font-bold">{tech}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section id="contact" className="my-12">
+          <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+          <form className="bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block mb-1 font-sans"
+                name="name"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full p-2 bg-gray-700 rounded-md font-sans"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block mb-1 font-sans"
+                name="email"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full p-2 bg-gray-700 rounded-md font-sans"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="message"
+                className="block mb-1 font-sans"
+                name="message"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                className="w-full p-2 bg-gray-700 rounded-md font-sans"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-sans"
+            >
+              Send
+            </button>
+          </form>
+        </section>
+        </section>
+      </main>
+      <footer className="p-6 bg-gray-800 text-center">
+        <p className="font-sans">&copy; 2023 My Portfolio</p>
+      </footer>
+      <style jsx global>{`
+        body {
+          animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .animation-slideIn {
+          animation: slideIn 2s;
+        }
+        @keyframes slideIn {
+          from {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }
