@@ -99,7 +99,12 @@ function MainComponent() {
       role: "実施済み",
       duration: "2日間",
     },
-
+    {
+      id: 4,
+      company: "HR Brain",
+      role: "実施予定",
+      duration: "2日間",
+    },
 
   ];
 
