@@ -90,16 +90,22 @@ function MainComponent() {
     {
       id: 2,
       company: "RIZAPグループ",
-      role: "実施予定",
+      role: "実施済み",
       duration: "3日間",
     },
     {
       id: 3,
       company: "セーフィー株式会社",
+      role: "実施済み",
+      duration: "2日間",
+    },
+    {
+      id: 4,
+      company: "HR Brain",
       role: "実施予定",
       duration: "2日間",
     },
-
+  
   ];
 
   const technologiesUsed = ["React", "Tailwind CSS", "JavaScript", "Node.js"];
